@@ -1,4 +1,5 @@
 import Foundation
+
 import SwiftData
 
 @Model
@@ -10,9 +11,17 @@ final class Game {
     var awayGoals: Int?
     var gameDateTime: Date
     var stadium: String
-    var status: GameStatus // Enums Codable são suportados diretamente
     
-    // Relacionamentos
+    var statusRawValue: String
+    var status: GameStatus {
+        get {
+            GameStatus(rawValue: statusRawValue) ?? .scheduled
+        }
+        set {
+            statusRawValue = newValue.rawValue
+        }
+    }
+    
     var homeTeam: Team?
     var awayTeam: Team?
     
@@ -27,6 +36,6 @@ final class Game {
         self.awayGoals = awayGoals
         self.gameDateTime = gameDateTime
         self.stadium = stadium
-        self.status = status
+        self.statusRawValue = status.rawValue
     }
 }
