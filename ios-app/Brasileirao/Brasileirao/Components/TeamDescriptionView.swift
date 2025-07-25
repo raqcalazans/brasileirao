@@ -26,3 +26,13 @@ struct TeamDescriptionView: View {
         .padding()
     }
 }
+
+#Preview {
+    TeamDescriptionView(team: 
+        Team(id: 0, 
+             name: "Botafogo", 
+             acronym: "BOT", 
+             logoURL: URL(fileURLWithPath: ""), 
+             teamDescrition: "Estrela solitária")
+    )
+}

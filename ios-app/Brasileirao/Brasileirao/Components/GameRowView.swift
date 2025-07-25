@@ -30,9 +30,21 @@ struct GameRowView: View {
                         .scaledToFit()
                         .frame(width: 35, height: 35)
                     
+                    if let homeGoals = game.homeGoals {
+                        Text(homeGoals.description)
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                    }
+                    
                     Text("x")
                         .font(.subheadline)
                         .foregroundColor(.secondary)
+                    
+                    if let awayGoals = game.awayGoals {
+                        Text(awayGoals.description)
+                            .font(.subheadline)
+                            .fontWeight(.bold)
+                    }
 
                     KFImage(awayTeam.logoURL)
                         .resizable()
@@ -47,13 +59,33 @@ struct GameRowView: View {
             .padding(.vertical, 8)
             
         } else {
-            // Opcional: O que fazer se os dados estiverem inconsistentes?
-            // Retornar EmptyView() é uma ótima opção, a linha simplesmente não aparecerá.
             EmptyView()
         }
     }
 }
 
 #Preview {
-    GameRowView(game: Game(id: 0, homeTeam: Team(id: 0, name: "", acronym: "CRU", logoURL: URL(fileURLWithPath: ""), teamDescrition: ""), awayTeam: Team(id: 0, name: "", acronym: "FLA", logoURL: URL(fileURLWithPath: ""), teamDescrition: ""), homeGoals: 0, awayGoals: 0, gameDateTime: Date(), stadium: "Maracanã", status: GameStatus.finished))
+    let homeTeamMock = Team(id: 0,
+                            name: "",
+                            acronym: "CRU",
+                            logoURL: URL(fileURLWithPath: ""),
+                            teamDescrition: "")
+    
+    let awayTeamMock = Team(id: 0,
+                            name: "",
+                            acronym: "FLA",
+                            logoURL: URL(fileURLWithPath: ""),
+                            teamDescrition: "")
+    
+    GameRowView(
+        game: Game(id: 0,
+                   homeTeam: homeTeamMock,
+                   awayTeam: awayTeamMock,
+                   homeGoals: 2,
+                   awayGoals: 1,
+                   gameDateTime: Date(),
+                   stadium: "Maracanã",
+                   status: GameStatus.finished
+                  )
+    )
 }

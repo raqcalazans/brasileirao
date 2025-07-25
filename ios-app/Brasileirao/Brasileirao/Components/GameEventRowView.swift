@@ -26,3 +26,7 @@ struct GameEventRowView: View {
         }
     }
 }
+
+#Preview {
+    GameEventRowView(event: GameEvent(id: 0, timeInGame: "25'", eventDescription: "Gol!"))
+}
