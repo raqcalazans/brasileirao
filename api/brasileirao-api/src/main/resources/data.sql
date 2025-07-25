@@ -18,7 +18,7 @@ INSERT INTO teams (name, acronym, logo_url, description) VALUES
 ('Figueirense', 'FIG', 'http://s.glbimg.com/es/sde/f/equipes/2014/04/14/figueirense_60x60.png', 'O Furacão do Estreito, clube catarinense com grande história no futebol regional.'),
 ('Goiás', 'GOI', 'http://s.glbimg.com/es/sde/f/equipes/2014/04/14/goias_60x60.png', 'O Esmeraldino, tradicional clube de Goiás, com forte presença no Centro-Oeste.'),
 ('Fluminense', 'FLU', 'http://s.glbimg.com/es/sde/f/equipes/2015/05/05/fluminense-escudo-65x65.png', 'O Tricolor das Laranjeiras, um dos mais antigos e tradicionais clubes do Rio de Janeiro.'),
-('Santos', 'SAN', 'http://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png', 'O Peixe, um dos clubes mais gloriosos do futebol brasileiro, conhecido por revelar grandes craques.');
+('Santos', 'SAN', 'http://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png', 'O Peixe, um dos clubes mais gloriosos do futebol brasileiro, conhecido por revelar grandes craques.'),
 ('Botafogo', 'BOT', 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png', 'O Glorioso, um dos clubes mais tradicionais do Rio de Janeiro, conhecido por sua icônica estrela solitária no escudo.');
 
 --- INSERÇÃO DOS JOGOS ---
@@ -26,7 +26,7 @@ INSERT INTO teams (name, acronym, logo_url, description) VALUES
 --- JOGOS AO VIVO ---
 INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
 ((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'CRU'), 1, 1, '2025-07-24T14:00:00Z', 'Mineirão, Belo Horizonte', 'AO_VIVO'),
-((SELECT id FROM teams WHERE acronym = 'FLA'), (SELECT id FROM teams WHERE acronym = 'VAS'), 2, 0, '2025-07-24T13:30:00Z', 'Maracanã, Rio de Janeiro', 'AO_VIVO');
+((SELECT id FROM teams WHERE acronym = 'FLA'), (SELECT id FROM teams WHERE acronym = 'VAS'), 2, 0, '2025-07-24T13:30:00Z', 'Maracanã, Rio de Janeiro', 'AO_VIVO'),
 ((SELECT id FROM teams WHERE acronym = 'BOT'), (SELECT id FROM teams WHERE acronym = 'FLU'), 0, 0, '2025-07-24T21:30:00Z', 'Estádio Nilton Santos, Rio de Janeiro', 'AO_VIVO');
 
 --- JOGOS FINALIZADOS ---
@@ -49,8 +49,8 @@ INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date
 ((SELECT id FROM teams WHERE acronym = 'FIG'), (SELECT id FROM teams WHERE acronym = 'CHA'), 0, 0, '2025-07-08T19:00:00Z', 'Orlando Scarpelli, Florianópolis', 'FINALIZADO'),
 ((SELECT id FROM teams WHERE acronym = 'PAL'), (SELECT id FROM teams WHERE acronym = 'GRE'), 4, 1, '2025-07-06T19:00:00Z', 'Allianz Parque, São Paulo', 'FINALIZADO'),
 ((SELECT id FROM teams WHERE acronym = 'SAN'), (SELECT id FROM teams WHERE acronym = 'FLA'), 1, 3, '2025-07-05T22:00:00Z', 'Vila Belmiro, Santos', 'FINALIZADO'),
-((SELECT id FROM teams WHERE acronym = 'VAS'), (SELECT id FROM teams WHERE acronym = 'COR'), 0, 0, '2025-07-05T19:00:00Z', 'São Januário, Rio de Janeiro', 'FINALIZADO');
-((SELECT id FROM teams WHERE acronym = 'COR'), (SELECT id FROM teams WHERE acronym = 'BOT'), 1, 2, '2025-07-19T22:00:00Z', 'Neo Química Arena, São Paulo', 'FINALIZADO')
+((SELECT id FROM teams WHERE acronym = 'VAS'), (SELECT id FROM teams WHERE acronym = 'COR'), 0, 0, '2025-07-05T19:00:00Z', 'São Januário, Rio de Janeiro', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'COR'), (SELECT id FROM teams WHERE acronym = 'BOT'), 1, 2, '2025-07-19T22:00:00Z', 'Neo Química Arena, São Paulo', 'FINALIZADO');
 
 --- JOGOS AGENDADOS ---
 INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
@@ -63,7 +63,7 @@ INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date
 ((SELECT id FROM teams WHERE acronym = 'SAN'), (SELECT id FROM teams WHERE acronym = 'GOI'), NULL, NULL, '2025-07-30T00:00:00Z', 'Vila Belmiro, Santos', 'AGENDADO'),
 ((SELECT id FROM teams WHERE acronym = 'CFC'), (SELECT id FROM teams WHERE acronym = 'AVA'), NULL, NULL, '2025-08-01T23:00:00Z', 'Couto Pereira, Curitiba', 'AGENDADO'),
 ((SELECT id FROM teams WHERE acronym = 'CHA'), (SELECT id FROM teams WHERE acronym = 'PON'), NULL, NULL, '2025-08-02T19:00:00Z', 'Arena Condá, Chapecó', 'AGENDADO'),
-((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'INT'), NULL, NULL, '2025-08-03T19:00:00Z', 'Arena MRV, Belo Horizonte', 'AGENDADO');
+((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'INT'), NULL, NULL, '2025-08-03T19:00:00Z', 'Arena MRV, Belo Horizonte', 'AGENDADO'),
 ((SELECT id FROM teams WHERE acronym = 'BOT'), (SELECT id FROM teams WHERE acronym = 'GRE'), NULL, NULL, '2025-08-02T19:00:00Z', 'Estádio Nilton Santos, Rio de Janeiro', 'AGENDADO');
 
 --- INSERÇÃO DOS EVENTOS DE JOGO ---

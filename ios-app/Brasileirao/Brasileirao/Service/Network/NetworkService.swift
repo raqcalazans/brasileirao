@@ -11,7 +11,6 @@ class NetworkService {
         self.decoder.dateDecodingStrategy = .iso8601
     }
     
-    // MUDANÇA: A função agora retorna [GameDTO], não [Game]
     func fetchGames() async throws -> [GameDTO] {
         guard let url = URL(string: "\(baseURL)/games") else {
             throw URLError(.badURL)
