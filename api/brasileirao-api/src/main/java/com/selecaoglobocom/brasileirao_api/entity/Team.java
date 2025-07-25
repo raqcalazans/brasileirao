@@ -26,5 +26,5 @@ public class Team {
     private URL logoUrl;
 
     @Column(name = "description", columnDefinition = "TEXT")
-    private String description; // Descrição do time, pode ser longa, então usamos TEXT
+    private String description;
 }

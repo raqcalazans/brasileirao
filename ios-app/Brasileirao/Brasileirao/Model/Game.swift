@@ -1,5 +1,4 @@
 import Foundation
-
 import SwiftData
 
 @Model
@@ -25,8 +24,8 @@ final class Game {
     var homeTeam: Team?
     var awayTeam: Team?
     
-    @Relationship(deleteRule: .cascade, inverse: \GameEvent.game)
-    var events: [GameEvent] = []
+    @Relationship(deleteRule: .cascade, inverse: \Event.game)
+    var events: [Event] = []
     
     init(id: Int, homeTeam: Team, awayTeam: Team, homeGoals: Int? = nil, awayGoals: Int? = nil, gameDateTime: Date, stadium: String, status: GameStatus) {
         self.id = id

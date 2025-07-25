@@ -2,7 +2,7 @@ import Foundation
 import SwiftData
 
 @Model
-final class GameEvent {
+final class Event {
     @Attribute(.unique)
     var id: Int
     

@@ -9,9 +9,10 @@ class NetworkService {
     init() {
         self.decoder = JSONDecoder()
         self.decoder.dateDecodingStrategy = .iso8601
+        self.decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
     
-    func fetchGames() async throws -> [GameDTO] {
+    func fetchGames() async throws -> GameScreenDTO {
         guard let url = URL(string: "\(baseURL)/games") else {
             throw URLError(.badURL)
         }
@@ -22,6 +23,6 @@ class NetworkService {
             throw URLError(.badServerResponse)
         }
         
-        return try decoder.decode([GameDTO].self, from: data)
+        return try decoder.decode(GameScreenDTO.self, from: data)
     }
 }

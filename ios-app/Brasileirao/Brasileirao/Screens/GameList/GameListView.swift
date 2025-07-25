@@ -4,6 +4,7 @@ import SwiftData
 struct GameListView: View {
     
     @Environment(\.modelContext) var modelContext
+    
     @StateObject private var viewModel: GameListViewModel
     
     init() {
@@ -12,47 +13,78 @@ struct GameListView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                FilterHeaderView(
-                    currentStatusTitle: viewModel.selectedStatus.title,
-                    onPrevious: { viewModel.selectPreviousStatus() },
-                    onNext: { viewModel.selectNextStatus() }
-                )
-                .padding(.horizontal)
-                .background(Color(.systemGroupedBackground))
+            
+            VStack(spacing: 0) {
+
+                if viewModel.currentGroup != nil {
+                    FilterHeaderView(
+                        currentStatusTitle: viewModel.currentGroup!.title,
+                        onPrevious: { viewModel.selectPreviousGroup() },
+                        onNext: { viewModel.selectNextGroup() }
+                    )
+                    .padding(.horizontal)
+                    .background(Color(.systemGray6))
+                }
 
                 ZStack {
-                    FilteredGamesList(filterStatus: viewModel.selectedStatus)
-                        .refreshable {
-                            await syncData()
-                        }
-                    
-                    if viewModel.isLoading {
+                    if viewModel.isLoading && viewModel.groups.isEmpty {
                         ProgressView("Buscando jogos...")
+                    } else if let group = viewModel.currentGroup, !group.games.isEmpty {
+                        List(group.games, id: \.id) { gameDTO in
+                            VStack(spacing: 0) {
+                                ZStack {
+                                    NavigationLink(destination: GameDetailContainerView(gameID: gameDTO.id)) {
+                                        EmptyView()
+                                    }
+                                    .opacity(0)
+                                    
+                                    GameView(gameDTO: gameDTO, style: .row)
+                                        .padding(.horizontal, 16)
+                                }
+                                
+                                Divider()
+                            }
+                            .listRowInsets(EdgeInsets())
+                            .listRowSeparator(.hidden)
+                        }
+                        .listStyle(.plain)
+                        .refreshable { await viewModel.syncGames() }
+                    } else {
+                        ContentUnavailableView(
+                            "Nenhum Jogo Encontrado",
+                            systemImage: "soccer.ball.inverse",
+                            description: Text("Não há jogos com o status \(viewModel.currentGroup?.title ?? "").")
+                        )
+                    }
+                    
+                    if viewModel.isLoading && !viewModel.groups.isEmpty {
+                        ProgressView()
                             .padding()
                             .background(Material.thin)
                             .cornerRadius(10)
-                            .shadow(radius: 5)
                     }
                 }
             }
             .navigationTitle("JOGOS")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button(action: {}) { Image(systemName: "arrow.left").foregroundColor(.primary) }
+                }
+                
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        Task {
-                            await syncData()
-                        }
-                    }) {
-                        Image(systemName: "arrow.clockwise")
-                            .foregroundColor(.primary)
+                    Button(action: { Task { await viewModel.syncGames() } }) {
+                        Image(systemName: "arrow.clockwise").foregroundColor(.primary)
                     }
                 }
             }
             
             .task {
-                await syncData()
+                await viewModel.syncGames()
+            }
+            
+            .onAppear {
+                viewModel.modelContext = modelContext
             }
 
             .alert("Erro de Rede", isPresented: .constant(viewModel.errorMessage != nil), actions: {
@@ -60,15 +92,7 @@ struct GameListView: View {
             }, message: {
                 Text(viewModel.errorMessage ?? "Ocorreu um erro desconhecido.")
             })
-
-            .onAppear {
-                viewModel.modelContext = modelContext
-            }
         }
-    }
-    
-    private func syncData() async {
-        await viewModel.syncGames()
     }
 }
 
@@ -85,6 +109,7 @@ struct FilterHeaderView: View {
             Spacer()
             Text(currentStatusTitle)
                 .font(.headline)
+                .frame(minWidth: 120)
             Spacer()
             Button(action: onNext) {
                 Image(systemName: "chevron.right")
@@ -92,7 +117,6 @@ struct FilterHeaderView: View {
         }
         .foregroundColor(.primary)
         .padding(.vertical, 8)
-        .listRowInsets(EdgeInsets())
     }
 }
 
@@ -100,9 +124,7 @@ struct FilterHeaderView: View {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Game.self, configurations: config)
-        
-        return GameListView()
-            .modelContainer(container)
+        return GameListView().modelContainer(container)
     } catch {
         return Text("Falha ao criar o container do preview: \(error.localizedDescription)")
     }

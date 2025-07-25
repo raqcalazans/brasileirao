@@ -3,7 +3,7 @@ import SwiftData
 
 @Model
 final class Team {
-    @Attribute(.unique) // Garante que não haverá times com o mesmo ID
+    @Attribute(.unique)
     var id: Int
     
     var name: String
@@ -11,7 +11,6 @@ final class Team {
     var logoURL: URL
     var teamDescription: String
     
-    // Relacionamento inverso: informa ao SwiftData que um time pode ter jogos em casa e fora
     @Relationship(inverse: \Game.homeTeam)
     var homeGames: [Game]?
     

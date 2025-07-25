@@ -17,7 +17,7 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY) // LAZY é melhor para performance
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "home_team_id", nullable = false)
     private Team homeTeam;
 
@@ -25,25 +25,25 @@ public class Game {
     @JoinColumn(name = "away_team_id", nullable = false)
     private Team awayTeam;
 
-    @Column(name = "home_goals") // Opcional, mas boa prática para clareza
-    private Integer homeGoals; // Integer (com 'I' maiúsculo) para permitir valores nulos
+    @Column(name = "home_goals")
+    private Integer homeGoals;
 
     @Column(name = "away_goals")
-    private Integer awayGoals; // Integer permite nulos, 'int' não
+    private Integer awayGoals;
 
     @Column(name = "game_date_time", nullable = false)
-    private OffsetDateTime gameDateTime; // O tipo ideal para colunas com fuso horário
+    private OffsetDateTime gameDateTime;
 
     @Column(nullable = false)
     private String stadium;
 
-    @Enumerated(EnumType.STRING) // Diz ao JPA para salvar o NOME do enum ("AO_VIVO") e não o número (1)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private GameStatus status;
 
     @OneToMany(
-            mappedBy = "game", // 'game' é o nome do campo na entidade GameEvent que aponta de volta para Game
-            cascade = CascadeType.ALL, // Se apagar um jogo, apaga os eventos associados
+            mappedBy = "game",
+            cascade = CascadeType.ALL,
             orphanRemoval = true,
             fetch = FetchType.LAZY
     )

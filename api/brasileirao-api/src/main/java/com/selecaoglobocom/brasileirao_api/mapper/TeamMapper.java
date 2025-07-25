@@ -20,6 +20,7 @@ public class TeamMapper {
         dto.setAcronym(team.getAcronym());
         dto.setLogoURL(team.getLogoUrl()); 
         dto.setDescription(team.getDescription());
+        
         return dto;
     }
 

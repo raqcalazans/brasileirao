@@ -1,12 +1,9 @@
-// src/main/java/com/brasileirao/mapper/GameMapper.java
 package com.selecaoglobocom.brasileirao_api.mapper;
 
 import com.selecaoglobocom.brasileirao_api.dto.GameDTO;
 import com.selecaoglobocom.brasileirao_api.dto.GameEventDTO;
-import com.selecaoglobocom.brasileirao_api.dto.TeamDTO;
 import com.selecaoglobocom.brasileirao_api.entity.Game;
 import com.selecaoglobocom.brasileirao_api.entity.GameEvent;
-import com.selecaoglobocom.brasileirao_api.entity.Team;
 import org.springframework.stereotype.Component;
 
 import java.time.Duration;
@@ -16,6 +13,12 @@ import java.util.stream.Collectors;
 
 @Component
 public class GameMapper {
+
+    private final TeamMapper teamMapper;
+
+    public GameMapper(TeamMapper teamMapper) {
+        this.teamMapper = teamMapper;
+    }
 
     public GameDTO toDto(Game game) {
         if (game == null) {
@@ -28,12 +31,11 @@ public class GameMapper {
         dto.setAwayGoals(game.getAwayGoals());
         dto.setGameDateTime(game.getGameDateTime());
         dto.setStadium(game.getStadium());
-        dto.setStatus(game.getStatus().name()); // Converte o enum para String
+        dto.setStatus(game.getStatus().name());
 
-        dto.setHomeTeam(toDto(game.getHomeTeam()));
-        dto.setAwayTeam(toDto(game.getAwayTeam()));
+        dto.setHomeTeam(teamMapper.toDto(game.getHomeTeam()));
+        dto.setAwayTeam(teamMapper.toDto(game.getAwayTeam()));
 
-        // Mapeia a lista de eventos, se existir
         if (game.getEvents() != null) {
             List<GameEventDTO> eventDTOs = game.getEvents().stream()
                     .map(eventEntity -> toDto(eventEntity, game))
@@ -52,7 +54,6 @@ public class GameMapper {
                 .collect(Collectors.toList());
     }
 
-    // Método auxiliar para eventos que calcula o timeInGame
     private GameEventDTO toDto(GameEvent event, Game parentGame) {
         if (event == null) {
             return null;
@@ -66,20 +67,6 @@ public class GameMapper {
         long minutes = duration.toMinutes();
         dto.setTimeInGame(String.format("%d'", minutes));
 
-        return dto;
-    }
-
-    // Método auxiliar para times
-    private TeamDTO toDto(Team team) {
-        if (team == null) {
-            return null;
-        }
-        TeamDTO dto = new TeamDTO();
-        dto.setId(team.getId());
-        dto.setName(team.getName());
-        dto.setAcronym(team.getAcronym());
-        dto.setLogoURL(team.getLogoUrl());
-        dto.setDescription(team.getDescription());
         return dto;
     }
 }

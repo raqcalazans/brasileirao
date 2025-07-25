@@ -6,9 +6,14 @@ class GameListViewModel: ObservableObject {
     
     @Published var isLoading = false
     @Published var errorMessage: String?
-    @Published var selectedStatus: GameStatus = .finished
+    @Published var groups: [GameGroupDTO] = []
+    @Published var selectedGroupIndex: Int = 0
     
     var modelContext: ModelContext?
+    
+    var currentGroup: GameGroupDTO? {
+        return groups.indices.contains(selectedGroupIndex) ? groups[selectedGroupIndex] : nil
+    }
     
     func syncGames() async {
         defer { isLoading = false }
@@ -22,32 +27,27 @@ class GameListViewModel: ObservableObject {
         }
         
         do {
-            let gameDTOs = try await NetworkService.shared.fetchGames()
-            let updater = DataUpdater(modelContext: modelContext)
+            let screenDTO = try await NetworkService.shared.fetchGames()
             
-            try updater.updateDatabase(with: gameDTOs)
+            let updater = DataUpdater(modelContext: modelContext)
+            try updater.updateDatabase(with: screenDTO)
+            
+            self.groups = screenDTO.groups
             
         } catch {
+            print("ERRO DE REDE: \(error)")
+            
             errorMessage = "Falha ao sincronizar os jogos: \(error.localizedDescription)"
         }
     }
-    
-    // MARK: - Filter Logic
-    func selectNextStatus() {
-        let allStatuses = GameStatus.allCases
-        guard let currentIndex = allStatuses.firstIndex(of: selectedStatus) else { return }
-        
-        let nextIndex = allStatuses.index(after: currentIndex)
-        
-        selectedStatus = allStatuses.indices.contains(nextIndex) ? allStatuses[nextIndex] : allStatuses.first!
-    }
-    
-    func selectPreviousStatus() {
-        let allStatuses = GameStatus.allCases
-        guard let currentIndex = allStatuses.firstIndex(of: selectedStatus) else { return }
-        
-        let previousIndex = allStatuses.index(before: currentIndex)
 
-        selectedStatus = allStatuses.indices.contains(previousIndex) ? allStatuses[previousIndex] : allStatuses.last!
+    func selectNextGroup() {
+        guard !groups.isEmpty else { return }
+        selectedGroupIndex = (selectedGroupIndex + 1) % groups.count
+    }
+
+    func selectPreviousGroup() {
+        guard !groups.isEmpty else { return }
+        selectedGroupIndex = (selectedGroupIndex - 1 + groups.count) % groups.count
     }
 }

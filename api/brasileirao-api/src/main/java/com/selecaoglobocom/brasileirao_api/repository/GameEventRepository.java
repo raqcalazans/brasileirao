@@ -6,6 +6,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface GameEventRepository extends JpaRepository<GameEvent, Integer> {
-    // Você poderia adicionar métodos customizados aqui no futuro, como:
-    // List<GameEvent> findByGameId(Integer gameId);
 }

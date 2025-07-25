@@ -9,5 +9,5 @@ struct GameDTO: Codable {
     let gameDateTime: Date
     let stadium: String
     let status: GameStatus
-    let events: [GameEventDTO]
+    let events: [EventDTO]
 }

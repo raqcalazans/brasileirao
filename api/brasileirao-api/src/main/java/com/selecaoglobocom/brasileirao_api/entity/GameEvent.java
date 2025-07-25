@@ -20,7 +20,7 @@ public class GameEvent {
     private String description;
 
     @Column(name = "event_time", nullable = false)
-    private OffsetDateTime eventTime; // Armazena o timestamp exato do evento
+    private OffsetDateTime eventTime;
 
     /**
      * Define o relacionamento "Muitos-para-Um" com a entidade Game.
