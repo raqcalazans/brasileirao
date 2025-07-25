@@ -19,47 +19,83 @@ INSERT INTO teams (name, acronym, logo_url, description) VALUES
 ('Goiás', 'GOI', 'http://s.glbimg.com/es/sde/f/equipes/2014/04/14/goias_60x60.png', 'O Esmeraldino, tradicional clube de Goiás, com forte presença no Centro-Oeste.'),
 ('Fluminense', 'FLU', 'http://s.glbimg.com/es/sde/f/equipes/2015/05/05/fluminense-escudo-65x65.png', 'O Tricolor das Laranjeiras, um dos mais antigos e tradicionais clubes do Rio de Janeiro.'),
 ('Santos', 'SAN', 'http://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png', 'O Peixe, um dos clubes mais gloriosos do futebol brasileiro, conhecido por revelar grandes craques.');
+('Botafogo', 'BOT', 'https://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png', 'O Glorioso, um dos clubes mais tradicionais do Rio de Janeiro, conhecido por sua icônica estrela solitária no escudo.');
 
--- Inserção dos Jogos (com datas em UTC e status ajustado)
--- Jogo 1 (Finalizado)
-INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
-((SELECT id FROM teams WHERE acronym = 'FLA'), (SELECT id FROM teams WHERE acronym = 'GRE'), 2, 1, '2025-07-20T22:00:00Z', 'Maracanã, Rio de Janeiro', 'FINALIZADO');
--- Jogo 2 (Finalizado)
-INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
-((SELECT id FROM teams WHERE acronym = 'PAL'), (SELECT id FROM teams WHERE acronym = 'COR'), 1, 1, '2025-07-19T19:00:00Z', 'Allianz Parque, São Paulo', 'FINALIZADO');
--- Jogo 3 (AJUSTADO PARA FINALIZADO, baseado na hora atual)
-INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
-((SELECT id FROM teams WHERE acronym = 'SAO'), (SELECT id FROM teams WHERE acronym = 'SAN'), 1, 0, '2025-07-23T16:00:00Z', 'Morumbi, São Paulo', 'FINALIZADO');
--- Jogo 4 (Agendado)
-INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
-((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'VAS'), NULL, NULL, '2025-07-26T00:00:00Z', 'Arena MRV, Belo Horizonte', 'AGENDADO');
--- Jogo 5 (Agendado)
-INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
-((SELECT id FROM teams WHERE acronym = 'FLU'), (SELECT id FROM teams WHERE acronym = 'INT'), NULL, NULL, '2025-07-27T21:00:00Z', 'Maracanã, Rio de Janeiro', 'AGENDADO');
--- Jogo 6 (Agendado)
-INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
-((SELECT id FROM teams WHERE acronym = 'CRU'), (SELECT id FROM teams WHERE acronym = 'CAP'), NULL, NULL, '2025-08-02T00:00:00Z', 'Mineirão, Belo Horizonte', 'AGENDADO');
+--- INSERÇÃO DOS JOGOS ---
 
--- Inserção dos Eventos de Jogo
--- Eventos Jogo 1: Flamengo 2x1 Grêmio
+--- JOGOS AO VIVO ---
+INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
+((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'CRU'), 1, 1, '2025-07-24T14:00:00Z', 'Mineirão, Belo Horizonte', 'AO_VIVO'),
+((SELECT id FROM teams WHERE acronym = 'FLA'), (SELECT id FROM teams WHERE acronym = 'VAS'), 2, 0, '2025-07-24T13:30:00Z', 'Maracanã, Rio de Janeiro', 'AO_VIVO');
+((SELECT id FROM teams WHERE acronym = 'BOT'), (SELECT id FROM teams WHERE acronym = 'FLU'), 0, 0, '2025-07-24T21:30:00Z', 'Estádio Nilton Santos, Rio de Janeiro', 'AO_VIVO');
+
+--- JOGOS FINALIZADOS ---
+INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
+((SELECT id FROM teams WHERE acronym = 'PAL'), (SELECT id FROM teams WHERE acronym = 'COR'), 1, 1, '2025-07-22T22:00:00Z', 'Allianz Parque, São Paulo', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'SAO'), (SELECT id FROM teams WHERE acronym = 'SAN'), 1, 0, '2025-07-22T22:00:00Z', 'Morumbi, São Paulo', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'GRE'), (SELECT id FROM teams WHERE acronym = 'INT'), 0, 0, '2025-07-21T23:00:00Z', 'Arena do Grêmio, Porto Alegre', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'CAP'), (SELECT id FROM teams WHERE acronym = 'CFC'), 2, 2, '2025-07-20T19:00:00Z', 'Arena da Baixada, Curitiba', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'SPO'), (SELECT id FROM teams WHERE acronym = 'AVA'), 1, 0, '2025-07-20T21:00:00Z', 'Ilha do Retiro, Recife', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'GOI'), (SELECT id FROM teams WHERE acronym = 'CHA'), 0, 1, '2025-07-19T22:00:00Z', 'Serra Dourada, Goiânia', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'PON'), (SELECT id FROM teams WHERE acronym = 'FIG'), 2, 0, '2025-07-19T19:00:00Z', 'Moisés Lucarelli, Campinas', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'FLA'), (SELECT id FROM teams WHERE acronym = 'SAO'), 2, 1, '2025-07-15T00:00:00Z', 'Maracanã, Rio de Janeiro', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'VAS'), (SELECT id FROM teams WHERE acronym = 'PAL'), 0, 3, '2025-07-14T23:00:00Z', 'São Januário, Rio de Janeiro', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'COR'), (SELECT id FROM teams WHERE acronym = 'SAN'), 2, 0, '2025-07-13T19:00:00Z', 'Neo Química Arena, São Paulo', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'INT'), (SELECT id FROM teams WHERE acronym = 'CAP'), 1, 1, '2025-07-13T21:30:00Z', 'Beira-Rio, Porto Alegre', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'CRU'), (SELECT id FROM teams WHERE acronym = 'GRE'), 0, 1, '2025-07-12T22:00:00Z', 'Mineirão, Belo Horizonte', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'FLU'), 2, 2, '2025-07-12T19:00:00Z', 'Arena MRV, Belo Horizonte', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'AVA'), (SELECT id FROM teams WHERE acronym = 'GOI'), 3, 0, '2025-07-10T00:00:00Z', 'Ressacada, Florianópolis', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'CFC'), (SELECT id FROM teams WHERE acronym = 'SPO'), 1, 2, '2025-07-09T23:00:00Z', 'Couto Pereira, Curitiba', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'FIG'), (SELECT id FROM teams WHERE acronym = 'CHA'), 0, 0, '2025-07-08T19:00:00Z', 'Orlando Scarpelli, Florianópolis', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'PAL'), (SELECT id FROM teams WHERE acronym = 'GRE'), 4, 1, '2025-07-06T19:00:00Z', 'Allianz Parque, São Paulo', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'SAN'), (SELECT id FROM teams WHERE acronym = 'FLA'), 1, 3, '2025-07-05T22:00:00Z', 'Vila Belmiro, Santos', 'FINALIZADO'),
+((SELECT id FROM teams WHERE acronym = 'VAS'), (SELECT id FROM teams WHERE acronym = 'COR'), 0, 0, '2025-07-05T19:00:00Z', 'São Januário, Rio de Janeiro', 'FINALIZADO');
+((SELECT id FROM teams WHERE acronym = 'COR'), (SELECT id FROM teams WHERE acronym = 'BOT'), 1, 2, '2025-07-19T22:00:00Z', 'Neo Química Arena, São Paulo', 'FINALIZADO')
+
+--- JOGOS AGENDADOS ---
+INSERT INTO games (home_team_id, away_team_id, home_goals, away_goals, game_date_time, stadium, status) VALUES
+((SELECT id FROM teams WHERE acronym = 'SAO'), (SELECT id FROM teams WHERE acronym = 'CAM'), NULL, NULL, '2025-07-25T23:00:00Z', 'Morumbi, São Paulo', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'INT'), (SELECT id FROM teams WHERE acronym = 'PAL'), NULL, NULL, '2025-07-26T19:00:00Z', 'Beira-Rio, Porto Alegre', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'CAP'), (SELECT id FROM teams WHERE acronym = 'FLA'), NULL, NULL, '2025-07-26T22:00:00Z', 'Arena da Baixada, Curitiba', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'GRE'), (SELECT id FROM teams WHERE acronym = 'VAS'), NULL, NULL, '2025-07-27T19:00:00Z', 'Arena do Grêmio, Porto Alegre', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'COR'), (SELECT id FROM teams WHERE acronym = 'FLU'), NULL, NULL, '2025-07-27T22:00:00Z', 'Neo Química Arena, São Paulo', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'CRU'), (SELECT id FROM teams WHERE acronym = 'SPO'), NULL, NULL, '2025-07-29T23:00:00Z', 'Mineirão, Belo Horizonte', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'SAN'), (SELECT id FROM teams WHERE acronym = 'GOI'), NULL, NULL, '2025-07-30T00:00:00Z', 'Vila Belmiro, Santos', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'CFC'), (SELECT id FROM teams WHERE acronym = 'AVA'), NULL, NULL, '2025-08-01T23:00:00Z', 'Couto Pereira, Curitiba', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'CHA'), (SELECT id FROM teams WHERE acronym = 'PON'), NULL, NULL, '2025-08-02T19:00:00Z', 'Arena Condá, Chapecó', 'AGENDADO'),
+((SELECT id FROM teams WHERE acronym = 'CAM'), (SELECT id FROM teams WHERE acronym = 'INT'), NULL, NULL, '2025-08-03T19:00:00Z', 'Arena MRV, Belo Horizonte', 'AGENDADO');
+((SELECT id FROM teams WHERE acronym = 'BOT'), (SELECT id FROM teams WHERE acronym = 'GRE'), NULL, NULL, '2025-08-02T19:00:00Z', 'Estádio Nilton Santos, Rio de Janeiro', 'AGENDADO');
+
+--- INSERÇÃO DOS EVENTOS DE JOGO ---
+
+--- Eventos Jogo Ao Vivo 1: CAM 1x1 CRU
 INSERT INTO game_events (description, event_time, game_id) VALUES
-('Início do 1º tempo', '2025-07-20T22:00:00Z', (SELECT id FROM games WHERE stadium = 'Maracanã, Rio de Janeiro' AND home_goals = 2)),
-('Gol do Flamengo (Pedro)', '2025-07-20T22:15:00Z', (SELECT id FROM games WHERE stadium = 'Maracanã, Rio de Janeiro' AND home_goals = 2)),
-('Gol do Grêmio (Suárez)', '2025-07-20T22:40:00Z', (SELECT id FROM games WHERE stadium = 'Maracanã, Rio de Janeiro' AND home_goals = 2)),
-('Gol do Flamengo (Gabigol)', '2025-07-20T23:25:00Z', (SELECT id FROM games WHERE stadium = 'Maracanã, Rio de Janeiro' AND home_goals = 2)),
-('Fim de jogo', '2025-07-20T23:50:00Z', (SELECT id FROM games WHERE stadium = 'Maracanã, Rio de Janeiro' AND home_goals = 2));
+('Início do jogo', '2025-07-24T14:00:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'CAM' AND at.acronym = 'CRU')),
+('Cartão amarelo para o Atlético-MG', '2025-07-24T14:18:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'CAM' AND at.acronym = 'CRU')),
+('Gol do Cruzeiro! Matheus Pereira abre o placar.', '2025-07-24T14:35:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'CAM' AND at.acronym = 'CRU')),
+('Intervalo de jogo.', '2025-07-24T14:46:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'CAM' AND at.acronym = 'CRU')),
+('Começa o segundo tempo!', '2025-07-24T15:01:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'CAM' AND at.acronym = 'CRU')),
+('Gol do Atlético-MG! Paulinho empata o clássico.', '2025-07-24T15:05:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'CAM' AND at.acronym = 'CRU'));
 
--- Eventos Jogo 2: Palmeiras 1x1 Corinthians
+--- Eventos Jogo Ao Vivo 2: FLA 2x0 VAS
 INSERT INTO game_events (description, event_time, game_id) VALUES
-('Início do jogo', '2025-07-19T19:00:00Z', (SELECT id FROM games WHERE stadium = 'Allianz Parque, São Paulo')),
-('Gol do Palmeiras', '2025-07-19T19:20:00Z', (SELECT id FROM games WHERE stadium = 'Allianz Parque, São Paulo')),
-('Gol do Corinthians', '2025-07-19T19:55:00Z', (SELECT id FROM games WHERE stadium = 'Allianz Parque, São Paulo')),
-('Fim do jogo', '2025-07-19T20:50:00Z', (SELECT id FROM games WHERE stadium = 'Allianz Parque, São Paulo'));
+('Apita o árbitro! Começa o clássico dos milhões!', '2025-07-24T13:30:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'FLA' AND at.acronym = 'VAS')),
+('GOL DO FLAMENGO! Pedro, de cabeça, abre o placar.', '2025-07-24T13:45:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'FLA' AND at.acronym = 'VAS')),
+('Cartão amarelo para Vegetti por reclamação.', '2025-07-24T14:05:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'FLA' AND at.acronym = 'VAS')),
+('Intervalo no Maracanã.', '2025-07-24T14:17:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'FLA' AND at.acronym = 'VAS')),
+('Bola rolando para a etapa final.', '2025-07-24T14:32:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'FLA' AND at.acronym = 'VAS')),
+('GOL DO FLAMENGO! Arrascaeta amplia de fora da área.', '2025-07-24T14:50:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'FLA' AND at.acronym = 'VAS'));
 
--- Eventos Jogo 3: São Paulo 1x0 Santos (Eventos ajustados)
+--- Eventos Jogos Finalizados ---
+-- PAL 1x1 COR
 INSERT INTO game_events (description, event_time, game_id) VALUES
-('Partida iniciada', '2025-07-23T16:00:00Z', (SELECT id FROM games WHERE stadium = 'Morumbi, São Paulo')),
-('Cartão amarelo para São Paulo', '2025-07-23T16:10:00Z', (SELECT id FROM games WHERE stadium = 'Morumbi, São Paulo')),
-('Ataque perigoso do Santos', '2025-07-23T16:25:00Z', (SELECT id FROM games WHERE stadium = 'Morumbi, São Paulo')),
-('Gol do São Paulo (Calleri)', '2025-07-23T17:20:00Z', (SELECT id FROM games WHERE stadium = 'Morumbi, São Paulo')),
-('Fim do jogo', '2025-07-23T17:52:00Z', (SELECT id FROM games WHERE stadium = 'Morumbi, São Paulo'));
+('Início do jogo', '2025-07-22T22:00:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'PAL' AND at.acronym = 'COR')),
+('Gol do Palmeiras', '2025-07-22T22:25:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'PAL' AND at.acronym = 'COR')),
+('Gol do Corinthians', '2025-07-22T23:10:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'PAL' AND at.acronym = 'COR')),
+('Fim de jogo', '2025-07-22T23:50:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'PAL' AND at.acronym = 'COR'));
+
+-- SAO 1x0 SAN
+INSERT INTO game_events (description, event_time, game_id) VALUES
+('Começa o clássico!', '2025-07-22T22:00:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'SAO' AND at.acronym = 'SAN')),
+('Gol do São Paulo', '2025-07-22T23:30:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'SAO' AND at.acronym = 'SAN')),
+('Fim de papo no Morumbi.', '2025-07-22T23:52:00Z', (SELECT g.id FROM games g JOIN teams ht ON g.home_team_id = ht.id JOIN teams at ON g.away_team_id = at.id WHERE ht.acronym = 'SAO' AND at.acronym = 'SAN'));
