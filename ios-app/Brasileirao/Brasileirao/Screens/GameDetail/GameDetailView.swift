@@ -13,8 +13,8 @@ struct GameDetailView: View {
 
             if !game.events.isEmpty {
                 Section(header: Text("Lance a Lance").fontWeight(.bold)) {
-                    ForEach(game.events.sorted(by: { $0.timeInGame < $1.timeInGame })) { event in
-                        EventView(event: event)
+                    ForEach(sortedEvents()) { event in
+                        GameEventView(event: event)
                     }
                     .listRowSeparator(.hidden)
                 }
@@ -37,4 +37,13 @@ struct GameDetailView: View {
         .navigationTitle("Detalhes da Partida")
         .navigationBarTitleDisplayMode(.inline)
     }
+    
+    private func sortedEvents() -> [GameEvent] {
+            return game.events.sorted { event1, event2 in
+                let time1 = Int(event1.timeInGame.filter { $0.isNumber }) ?? 0
+                let time2 = Int(event2.timeInGame.filter { $0.isNumber }) ?? 0
+                
+                return time1 < time2
+            }
+        }
 }

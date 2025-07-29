@@ -14,11 +14,12 @@ struct GameView: View {
     let gameDateTime: Date
     let homeGoals: Int?
     let awayGoals: Int?
-    let status: GameStatus
+    let groupTitle: String
+    let isLive: Bool
     let style: GameViewStyle
 
-    init?(game: Game?, style: GameViewStyle) {
-        guard let game = game, let homeTeam = game.homeTeam, let awayTeam = game.awayTeam else {
+    init?(game: Game, style: GameViewStyle) {
+        guard let homeTeam = game.homeTeam, let awayTeam = game.awayTeam else {
             return nil
         }
 
@@ -29,18 +30,20 @@ struct GameView: View {
         self.gameDateTime = game.gameDateTime
         self.homeGoals = game.homeGoals
         self.awayGoals = game.awayGoals
-        self.status = game.status
+        self.groupTitle = game.filterGroup?.title ?? ""
+        self.isLive = game.isLive
         self.style = style
     }
     
-    init(gameDTO: GameDTO, style: GameViewStyle) {
+    init(gameDTO: GameDTO, groupTitle: String, style: GameViewStyle) {
         self.homeTeamDTO = gameDTO.homeTeam
         self.awayTeamDTO = gameDTO.awayTeam
         self.stadium = gameDTO.stadium
         self.gameDateTime = gameDTO.gameDateTime
         self.homeGoals = gameDTO.homeGoals
         self.awayGoals = gameDTO.awayGoals
-        self.status = gameDTO.status
+        self.groupTitle = groupTitle
+        self.isLive = gameDTO.isLive
         self.style = style
     }
 
@@ -78,7 +81,7 @@ struct GameView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    if status == .live {
+                    if isLive {
                         Text("AO VIVO")
                             .font(.caption).bold().foregroundColor(.red)
                     }

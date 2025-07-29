@@ -38,7 +38,7 @@ struct GameListView: View {
                                     }
                                     .opacity(0)
                                     
-                                    GameView(gameDTO: gameDTO, style: .row)
+                                    GameView(gameDTO: gameDTO, groupTitle: group.title, style: .row)
                                         .padding(.horizontal, 16)
                                 }
                                 

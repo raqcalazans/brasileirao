@@ -17,7 +17,12 @@ final class Team {
     @Relationship(inverse: \Game.awayTeam)
     var awayGames: [Game]?
     
-    init(id: Int, name: String, acronym: String, logoURL: URL, teamDescrition: String) {
+    init(id: Int,
+         name: String,
+         acronym: String,
+         logoURL: URL,
+         teamDescrition: String) {
+        
         self.id = id
         self.name = name
         self.acronym = acronym

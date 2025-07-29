@@ -10,7 +10,7 @@ struct BrasileiraoApp: App {
         let schema = Schema([
             Game.self,
             Team.self,
-            Event.self
+            GameEvent.self
         ])
         
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)

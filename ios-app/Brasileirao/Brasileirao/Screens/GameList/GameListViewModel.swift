@@ -21,7 +21,7 @@ class GameListViewModel: ObservableObject {
         isLoading = true
         errorMessage = nil
 
-        guard let modelContext = modelContext else {
+        guard let modelContext else {
             errorMessage = "Erro interno: O contexto do banco de dados não está disponível."
             return
         }
@@ -35,8 +35,6 @@ class GameListViewModel: ObservableObject {
             self.groups = screenDTO.groups
             
         } catch {
-            print("ERRO DE REDE: \(error)")
-            
             errorMessage = "Falha ao sincronizar os jogos: \(error.localizedDescription)"
         }
     }

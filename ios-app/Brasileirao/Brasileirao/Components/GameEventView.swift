@@ -1,7 +1,7 @@
 import SwiftUI
 
-struct EventView: View {
-    let event: Event
+struct GameEventView: View {
+    let event: GameEvent
     
     var body: some View {
         HStack(alignment: .top, spacing: 16) {
@@ -28,5 +28,5 @@ struct EventView: View {
 }
 
 #Preview {
-    EventView(event: Event(id: 0, timeInGame: "25'", eventDescription: "Gol!"))
+    GameEventView(event: GameEvent(id: 0, timeInGame: "25'", eventDescription: "Gol!"))
 }

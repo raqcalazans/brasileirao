@@ -37,9 +37,8 @@ public class Game {
     @Column(nullable = false)
     private String stadium;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private GameStatus status;
+    @Column(name = "is_live", nullable = false)
+    private boolean isLive;
 
     @OneToMany(
             mappedBy = "game",
@@ -48,4 +47,8 @@ public class Game {
             fetch = FetchType.LAZY
     )
     private List<GameEvent> events;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "filter_group_id")
+    private FilterGroup filterGroup;
 }

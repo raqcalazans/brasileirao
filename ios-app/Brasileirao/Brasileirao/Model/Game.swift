@@ -10,24 +10,25 @@ final class Game {
     var awayGoals: Int?
     var gameDateTime: Date
     var stadium: String
+    var isLive: Bool
     
-    var statusRawValue: String
-    var status: GameStatus {
-        get {
-            GameStatus(rawValue: statusRawValue) ?? .scheduled
-        }
-        set {
-            statusRawValue = newValue.rawValue
-        }
-    }
+    var filterGroup: FilterGroup?
     
     var homeTeam: Team?
     var awayTeam: Team?
     
-    @Relationship(deleteRule: .cascade, inverse: \Event.game)
-    var events: [Event] = []
+    @Relationship(deleteRule: .cascade, inverse: \GameEvent.game)
+    var events: [GameEvent] = []
     
-    init(id: Int, homeTeam: Team, awayTeam: Team, homeGoals: Int? = nil, awayGoals: Int? = nil, gameDateTime: Date, stadium: String, status: GameStatus) {
+    init(id: Int,
+         homeTeam: Team,
+         awayTeam: Team,
+         homeGoals: Int? = nil,
+         awayGoals: Int? = nil,
+         gameDateTime: Date,
+         stadium: String,
+         isLive: Bool) {
+        
         self.id = id
         self.homeTeam = homeTeam
         self.awayTeam = awayTeam
@@ -35,6 +36,6 @@ final class Game {
         self.awayGoals = awayGoals
         self.gameDateTime = gameDateTime
         self.stadium = stadium
-        self.statusRawValue = status.rawValue
+        self.isLive = isLive
     }
 }

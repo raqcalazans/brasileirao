@@ -8,6 +8,6 @@ struct GameDTO: Codable {
     let awayGoals: Int?
     let gameDateTime: Date
     let stadium: String
-    let status: GameStatus
-    let events: [EventDTO]
+    let isLive: Bool
+    let events: [GameEventDTO]
 }

@@ -31,7 +31,7 @@ public class GameMapper {
         dto.setAwayGoals(game.getAwayGoals());
         dto.setGameDateTime(game.getGameDateTime());
         dto.setStadium(game.getStadium());
-        dto.setStatus(game.getStatus().name());
+        dto.setLive(game.isLive());
 
         dto.setHomeTeam(teamMapper.toDto(game.getHomeTeam()));
         dto.setAwayTeam(teamMapper.toDto(game.getAwayTeam()));
@@ -62,7 +62,6 @@ public class GameMapper {
         dto.setId(event.getId());
         dto.setDescription(event.getDescription());
 
-        // **LÓGICA CENTRAL: CALCULA O TEMPO DE JOGO**
         Duration duration = Duration.between(parentGame.getGameDateTime(), event.getEventTime());
         long minutes = duration.toMinutes();
         dto.setTimeInGame(String.format("%d'", minutes));

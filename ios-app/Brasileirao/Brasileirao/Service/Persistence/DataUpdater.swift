@@ -20,7 +20,6 @@ class DataUpdater {
                 if let existingGame = try modelContext.fetch(fetchDescriptor).first {
                     existingGame.homeGoals = gameDTO.homeGoals
                     existingGame.awayGoals = gameDTO.awayGoals
-                    existingGame.status = gameDTO.status
                 } else {
                     let newGame = Game(
                         id: gameDTO.id,
@@ -30,12 +29,12 @@ class DataUpdater {
                         awayGoals: gameDTO.awayGoals,
                         gameDateTime: gameDTO.gameDateTime,
                         stadium: gameDTO.stadium,
-                        status: gameDTO.status
+                        isLive: gameDTO.isLive,
                     )
                     modelContext.insert(newGame)
                     
                     for eventDTO in gameDTO.events {
-                        let newEvent = Event(
+                        let newEvent = GameEvent(
                             id: eventDTO.id,
                             timeInGame: eventDTO.timeInGame,
                             eventDescription: eventDTO.description
