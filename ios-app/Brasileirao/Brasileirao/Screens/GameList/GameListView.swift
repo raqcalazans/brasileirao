@@ -4,7 +4,6 @@ import SwiftData
 struct GameListView: View {
     
     @Environment(\.modelContext) var modelContext
-    
     @StateObject private var viewModel: GameListViewModel
     
     init() {
@@ -52,7 +51,7 @@ struct GameListView: View {
                     } else {
                         ContentUnavailableView(
                             "Nenhum Jogo Encontrado",
-                            systemImage: "soccer.ball.inverse",
+                            systemImage: "soccerball.inverse",
                             description: Text("Não há jogos com o status \(viewModel.currentGroup?.title ?? "").")
                         )
                     }

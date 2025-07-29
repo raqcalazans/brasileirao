@@ -11,14 +11,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		160AC4D92E316284003D13A2 /* PBXContainerItemProxy */ = {
+		1624F53C2E39179F0053DEDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 160AC4C12E316281003D13A2 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 160AC4C82E316282003D13A2;
 			remoteInfo = Brasileirao;
 		};
-		160AC4E32E316284003D13A2 /* PBXContainerItemProxy */ = {
+		1624F5692E3942570053DEDC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 160AC4C12E316281003D13A2 /* Project object */;
 			proxyType = 1;
@@ -29,8 +29,8 @@
 
 /* Begin PBXFileReference section */
 		160AC4C92E316282003D13A2 /* Brasileirao.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brasileirao.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		160AC4D82E316284003D13A2 /* BrasileiraoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrasileiraoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		160AC4E22E316284003D13A2 /* BrasileiraoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrasileiraoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1624F5382E39179F0053DEDC /* BrasileiraoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrasileiraoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1624F5632E3942570053DEDC /* BrasileiraoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BrasileiraoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -52,12 +52,12 @@
 			path = Brasileirao;
 			sourceTree = "<group>";
 		};
-		160AC4DB2E316284003D13A2 /* BrasileiraoTests */ = {
+		1624F5392E39179F0053DEDC /* BrasileiraoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BrasileiraoTests;
 			sourceTree = "<group>";
 		};
-		160AC4E52E316284003D13A2 /* BrasileiraoUITests */ = {
+		1624F5642E3942570053DEDC /* BrasileiraoUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = BrasileiraoUITests;
 			sourceTree = "<group>";
@@ -73,14 +73,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		160AC4D52E316284003D13A2 /* Frameworks */ = {
+		1624F5352E39179F0053DEDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		160AC4DF2E316284003D13A2 /* Frameworks */ = {
+		1624F5602E3942570053DEDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -94,8 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				160AC4CB2E316282003D13A2 /* Brasileirao */,
-				160AC4DB2E316284003D13A2 /* BrasileiraoTests */,
-				160AC4E52E316284003D13A2 /* BrasileiraoUITests */,
+				1624F5392E39179F0053DEDC /* BrasileiraoTests */,
+				1624F5642E3942570053DEDC /* BrasileiraoUITests */,
 				160AC4CA2E316282003D13A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -104,8 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				160AC4C92E316282003D13A2 /* Brasileirao.app */,
-				160AC4D82E316284003D13A2 /* BrasileiraoTests.xctest */,
-				160AC4E22E316284003D13A2 /* BrasileiraoUITests.xctest */,
+				1624F5382E39179F0053DEDC /* BrasileiraoTests.xctest */,
+				1624F5632E3942570053DEDC /* BrasileiraoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -136,50 +136,50 @@
 			productReference = 160AC4C92E316282003D13A2 /* Brasileirao.app */;
 			productType = "com.apple.product-type.application";
 		};
-		160AC4D72E316284003D13A2 /* BrasileiraoTests */ = {
+		1624F5372E39179F0053DEDC /* BrasileiraoTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 160AC4EF2E316284003D13A2 /* Build configuration list for PBXNativeTarget "BrasileiraoTests" */;
+			buildConfigurationList = 1624F53E2E39179F0053DEDC /* Build configuration list for PBXNativeTarget "BrasileiraoTests" */;
 			buildPhases = (
-				160AC4D42E316284003D13A2 /* Sources */,
-				160AC4D52E316284003D13A2 /* Frameworks */,
-				160AC4D62E316284003D13A2 /* Resources */,
+				1624F5342E39179F0053DEDC /* Sources */,
+				1624F5352E39179F0053DEDC /* Frameworks */,
+				1624F5362E39179F0053DEDC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				160AC4DA2E316284003D13A2 /* PBXTargetDependency */,
+				1624F53D2E39179F0053DEDC /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				160AC4DB2E316284003D13A2 /* BrasileiraoTests */,
+				1624F5392E39179F0053DEDC /* BrasileiraoTests */,
 			);
 			name = BrasileiraoTests;
 			packageProductDependencies = (
 			);
 			productName = BrasileiraoTests;
-			productReference = 160AC4D82E316284003D13A2 /* BrasileiraoTests.xctest */;
+			productReference = 1624F5382E39179F0053DEDC /* BrasileiraoTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		160AC4E12E316284003D13A2 /* BrasileiraoUITests */ = {
+		1624F5622E3942570053DEDC /* BrasileiraoUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 160AC4F22E316284003D13A2 /* Build configuration list for PBXNativeTarget "BrasileiraoUITests" */;
+			buildConfigurationList = 1624F56B2E3942570053DEDC /* Build configuration list for PBXNativeTarget "BrasileiraoUITests" */;
 			buildPhases = (
-				160AC4DE2E316284003D13A2 /* Sources */,
-				160AC4DF2E316284003D13A2 /* Frameworks */,
-				160AC4E02E316284003D13A2 /* Resources */,
+				1624F55F2E3942570053DEDC /* Sources */,
+				1624F5602E3942570053DEDC /* Frameworks */,
+				1624F5612E3942570053DEDC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				160AC4E42E316284003D13A2 /* PBXTargetDependency */,
+				1624F56A2E3942570053DEDC /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
-				160AC4E52E316284003D13A2 /* BrasileiraoUITests */,
+				1624F5642E3942570053DEDC /* BrasileiraoUITests */,
 			);
 			name = BrasileiraoUITests;
 			packageProductDependencies = (
 			);
 			productName = BrasileiraoUITests;
-			productReference = 160AC4E22E316284003D13A2 /* BrasileiraoUITests.xctest */;
+			productReference = 1624F5632E3942570053DEDC /* BrasileiraoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -195,11 +195,11 @@
 					160AC4C82E316282003D13A2 = {
 						CreatedOnToolsVersion = 16.3;
 					};
-					160AC4D72E316284003D13A2 = {
+					1624F5372E39179F0053DEDC = {
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 160AC4C82E316282003D13A2;
 					};
-					160AC4E12E316284003D13A2 = {
+					1624F5622E3942570053DEDC = {
 						CreatedOnToolsVersion = 16.3;
 						TestTargetID = 160AC4C82E316282003D13A2;
 					};
@@ -223,8 +223,8 @@
 			projectRoot = "";
 			targets = (
 				160AC4C82E316282003D13A2 /* Brasileirao */,
-				160AC4D72E316284003D13A2 /* BrasileiraoTests */,
-				160AC4E12E316284003D13A2 /* BrasileiraoUITests */,
+				1624F5372E39179F0053DEDC /* BrasileiraoTests */,
+				1624F5622E3942570053DEDC /* BrasileiraoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,14 +237,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		160AC4D62E316284003D13A2 /* Resources */ = {
+		1624F5362E39179F0053DEDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		160AC4E02E316284003D13A2 /* Resources */ = {
+		1624F5612E3942570053DEDC /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -261,14 +261,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		160AC4D42E316284003D13A2 /* Sources */ = {
+		1624F5342E39179F0053DEDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		160AC4DE2E316284003D13A2 /* Sources */ = {
+		1624F55F2E3942570053DEDC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,15 +278,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		160AC4DA2E316284003D13A2 /* PBXTargetDependency */ = {
+		1624F53D2E39179F0053DEDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 160AC4C82E316282003D13A2 /* Brasileirao */;
-			targetProxy = 160AC4D92E316284003D13A2 /* PBXContainerItemProxy */;
+			targetProxy = 1624F53C2E39179F0053DEDC /* PBXContainerItemProxy */;
 		};
-		160AC4E42E316284003D13A2 /* PBXTargetDependency */ = {
+		1624F56A2E3942570053DEDC /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 160AC4C82E316282003D13A2 /* Brasileirao */;
-			targetProxy = 160AC4E32E316284003D13A2 /* PBXContainerItemProxy */;
+			targetProxy = 1624F5692E3942570053DEDC /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -480,7 +480,7 @@
 			};
 			name = Release;
 		};
-		160AC4F02E316284003D13A2 /* Debug */ = {
+		1624F53F2E39179F0053DEDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -488,7 +488,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KRD8562RRJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.selecaoglobocom.BrasileiraoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -499,7 +499,7 @@
 			};
 			name = Debug;
 		};
-		160AC4F12E316284003D13A2 /* Release */ = {
+		1624F5402E39179F0053DEDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -507,7 +507,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KRD8562RRJ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.selecaoglobocom.BrasileiraoTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -518,13 +518,14 @@
 			};
 			name = Release;
 		};
-		160AC4F32E316284003D13A2 /* Debug */ = {
+		1624F56C2E3942570053DEDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KRD8562RRJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.selecaoglobocom.BrasileiraoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -535,13 +536,14 @@
 			};
 			name = Debug;
 		};
-		160AC4F42E316284003D13A2 /* Release */ = {
+		1624F56D2E3942570053DEDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KRD8562RRJ;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.selecaoglobocom.BrasileiraoUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -573,20 +575,20 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		160AC4EF2E316284003D13A2 /* Build configuration list for PBXNativeTarget "BrasileiraoTests" */ = {
+		1624F53E2E39179F0053DEDC /* Build configuration list for PBXNativeTarget "BrasileiraoTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				160AC4F02E316284003D13A2 /* Debug */,
-				160AC4F12E316284003D13A2 /* Release */,
+				1624F53F2E39179F0053DEDC /* Debug */,
+				1624F5402E39179F0053DEDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		160AC4F22E316284003D13A2 /* Build configuration list for PBXNativeTarget "BrasileiraoUITests" */ = {
+		1624F56B2E3942570053DEDC /* Build configuration list for PBXNativeTarget "BrasileiraoUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				160AC4F32E316284003D13A2 /* Debug */,
-				160AC4F42E316284003D13A2 /* Release */,
+				1624F56C2E3942570053DEDC /* Debug */,
+				1624F56D2E3942570053DEDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

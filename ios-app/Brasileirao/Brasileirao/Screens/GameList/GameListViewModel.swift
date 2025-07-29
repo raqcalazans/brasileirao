@@ -9,10 +9,16 @@ class GameListViewModel: ObservableObject {
     @Published var groups: [GameGroupDTO] = []
     @Published var selectedGroupIndex: Int = 0
     
+    private let networkService: NetworkServiceProtocol
+    
     var modelContext: ModelContext?
     
     var currentGroup: GameGroupDTO? {
         return groups.indices.contains(selectedGroupIndex) ? groups[selectedGroupIndex] : nil
+    }
+    
+    init(networkService: NetworkServiceProtocol = NetworkService()) {
+        self.networkService = networkService
     }
     
     func syncGames() async {
@@ -27,7 +33,7 @@ class GameListViewModel: ObservableObject {
         }
         
         do {
-            let screenDTO = try await NetworkService.shared.fetchGames()
+            let screenDTO = try await networkService.fetchGames()
             
             let updater = DataUpdater(modelContext: modelContext)
             try updater.updateDatabase(with: screenDTO)

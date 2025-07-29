@@ -29,7 +29,7 @@ class DataUpdater {
                         awayGoals: gameDTO.awayGoals,
                         gameDateTime: gameDTO.gameDateTime,
                         stadium: gameDTO.stadium,
-                        isLive: gameDTO.isLive,
+                        isLive: gameDTO.isLive
                     )
                     modelContext.insert(newGame)
                     
