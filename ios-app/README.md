@@ -1,59 +1,63 @@
-# Brasileirão App (iOS)
+# Brasileirão iOS App
 
-Este diretório contém o código-fonte do aplicativo iOS "Brasileirão", desenvolvido para acompanhar jogos de futebol. O aplicativo consome dados de uma API backend (cujo código está no diretório `api/` deste repositório) e oferece funcionalidades offline.
+## Visão Geral
 
-## ✨ Funcionalidades (MVP)
+Aplicativo iOS nativo para acompanhamento de jogos de futebol, desenvolvido com **SwiftUI** e as tecnologias mais recentes do ecossistema Apple, como parte do desafio de código da Globo.com.
 
-* **Listagem de Jogos:** Exibe uma lista de jogos com nomes dos times, escudos, placar, data e horário.
-* **Detalhe do Jogo:** Ao tocar em um jogo, exibe informações mais detalhadas da partida, incluindo os lances formatados.
-* **Persistência Offline:** A lista de jogos e seus detalhes estão disponíveis offline, utilizando SwiftData.
-* **Atualização de Dados:** Capacidade de atualizar a lista de jogos via "Pull-to-Refresh" para buscar as últimas informações da API.
-* **Carregamento de Imagens:** Carregamento assíncrono e cache dos escudos dos times usando Kingfisher.
+## Funcionalidades
 
-## 📐 Arquitetura e Tecnologias
+-   **Listagem de jogos:** Tela com a lista dos jogos e filtros dinâmicos controlados pela API.
+-   **Detalhes da partida:** Visualização de detalhes da partida, incluindo placar, local e "Lance a Lance".
+-   **Suporte Offline:** O aplicativo utiliza SwiftData para criar um cache local dos dados, permitindo que o usuário visualize os jogos mesmo sem conexão com a internet.
+- **Atualização de Dados:** Capacidade de atualizar a lista de jogos via "Pull-to-Refresh" para buscar as últimas informações da API.
+- **Carregamento de Imagens:** Carregamento assíncrono e cache dos escudos dos times usando Kingfisher.
 
-O aplicativo é construído utilizando a arquitetura **MVVM (Model-View-ViewModel)**, que promove a separação de preocupações e facilita a manutenção e testabilidade do código.
+## Arquitetura e Decisões de Design
 
-* **Linguagem:** Swift
-* **Framework UI:** SwiftUI
-* **Persistência de Dados:** SwiftData
-* **Requisições de Rede:** URLSession
-* **Carregamento de Imagens:** Kingfisher (via Swift Package Manager)
+-   **MVVM + Services:** A arquitetura principal é a Model-View-ViewModel, complementada por uma camada de Serviços para responsabilidades como rede e persistência, mantendo as Views e ViewModels limpas.
+-   **Cliente de UI Guiada pelo Servidor (SDUI):** A tela de listagem de jogos é um "renderizador" flexível. Ela não possui lógica de filtro fixa; em vez disso, ela constrói a UI com base na estrutura de grupos enviada pela API. Isso permite que a forma de exibição dos jogos seja alterada remotamente.
+-   **SwiftData como Cache e Fonte da Verdade:** O app sincroniza os dados da API com um banco de dados local robusto usando SwiftData. As telas de detalhes leem diretamente desta fonte de verdade local, garantindo a funcionalidade offline e a consistência dos dados.
+-   **Injeção de Dependência e Testabilidade:** O uso de protocolos (ex: `NetworkServiceProtocol`) e injeção de dependência no `ViewModel` permite que a lógica de negócio seja testada de forma isolada, "mocando" a camada de rede.
 
-## ⚙️ Configuração e Execução Local
+## Stack de Tecnologias
 
-Siga os passos abaixo para configurar e rodar o aplicativo iOS em seu dispositivo ou simulador.
+-   **Swift 5 / Xcode 16+**
+-   **SwiftUI:** Para a construção declarativa da interface.
+-   **SwiftData:** Para persistência local, cache e suporte offline.
+-   **Swift Testing:** Framework moderno utilizado para os testes de unidade.
+-   **Kingfisher:** Para carregamento e cache de imagens da rede de forma eficiente.
+-   **Target Mínimo:** iOS 17.0
 
-### Pré-requisitos
+## Estrutura do Projeto
 
-* **Xcode 15.0 ou superior:** Necessário para desenvolver e compilar o aplicativo.
-* **macOS Sonoma (14.0) ou superior:** Para compatibilidade com o Xcode 15+ e SwiftData.
-* **Dispositivo/Simulador iOS 17.0 ou superior:** SwiftData requer iOS 17+.
-* **API Backend Rodando:** Certifique-se de que a API do Brasileirão (localizada em `api/` neste repositório) esteja em execução em `http://localhost:8080`.
+O código está organizado em pastas que refletem a arquitetura do aplicativo:
+-   `App`: Ponto de entrada e configuração.
+-   `Screens`: Contém as telas principais, com suas Views e ViewModels agrupados por funcionalidade.
+-   `Components`: Views SwiftUI pequenas e reutilizáveis.
+-   `Model`: As classes `@Model` do SwiftData.
+-   `Service`: Onde reside a lógica de Rede, DTOs e a sincronização com o banco (DataUpdater).
+-   `Extensions`: Extensões de tipos nativos para funcionalidades auxiliares.
 
-### Instalação
+## Como Rodar o Projeto
 
-1.  **Clone o Repositório Principal:**
-    Se você ainda não clonou o repositório principal:
-    ```bash
-    git clone [URL_DO_SEU_REPOSITORIO]
-    ```
-2.  **Navegue até o diretório do Projeto iOS:**
-    ```bash
-    cd [caminho_do_seu_repositorio]/ios-app/BrasileiraoApp
-    ```
-    (Ou o nome da pasta do seu projeto Xcode)
-3.  **Abra o Projeto no Xcode:**
-    Clique duas vezes no arquivo `.xcodeproj` ou `.xcworkspace` (se gerado) ou abra o Xcode e vá em `File > Open...` e selecione a pasta do projeto.
-4.  **Instalar Dependências (Kingfisher):**
-    O Kingfisher é gerenciado via Swift Package Manager (SPM). O Xcode deve baixar e resolver as dependências automaticamente ao abrir o projeto. Se não o fizer, vá em `File > Packages > Resolve Package Versions`.
+**Pré-requisitos:**
+-   macOS com Xcode 16.0 ou superior.
+-   A API do Brasileirão deve estar rodando localmente em `http://localhost:8080`.
 
-### Executando o Aplicativo
+**Passos:**
+1.  Navegue até a pasta `ios-app/`.
+2.  Abra o arquivo `Brasileirao.xcodeproj`.
+3.  Selecione um simulador de iPhone (ex: iPhone 15 Pro) e clique em "Run" (ou `Command + R`).
 
-1.  **Selecione um Simulador ou Dispositivo:** Na barra de ferramentas do Xcode, escolha um simulador (`iPhone 15 Pro`, por exemplo) ou conecte um dispositivo físico. Certifique-se de que ele esteja rodando **iOS 17.0 ou superior**.
-2.  **Rode a Aplicação:** Clique no botão "Run" (o ícone de play) na barra de ferramentas do Xcode, ou use `Command + R`.
+## Testes
 
-## ⚠️ **Consideração Importante: App Transport Security (ATS) Exception**
+O projeto inclui testes de unidade para a lógica principal do `ViewModel`.
+-   Os testes foram escritos com o novo framework **Swift Testing**.
+-   A camada de rede é "mocada" para garantir que os testes de unidade sejam rápidos e independentes.
+
+Para rodar os testes, abra o projeto no Xcode e pressione `Command + U`.
+
+## **Consideração Importante: App Transport Security (ATS) Exception**
 
 Ao tentar carregar os escudos dos times fornecidos pela `s.glbimg.com`, foi encontrado o erro **"The resource could not be loaded because the App Transport Security policy requires the use of a secure connection."**
 
@@ -65,15 +69,12 @@ Ao tentar carregar os escudos dos times fornecidos pela `s.glbimg.com`, foi enco
     1.  **Opção Recomendada (Ideal):** A forma correta e segura de resolver isso em um aplicativo de produção seria garantir que as URLs das imagens sejam fornecidas via **HTTPS**. Isso envolveria solicitar à fonte dos dados que forneça URLs HTTPS, ou usar um serviço de proxy/CDN que possa servir as imagens via HTTPS a partir da fonte HTTP original.
     2.  **Opção Alternativa (Se HTTPS Direto não for possível):** Se não for possível obter as imagens via HTTPS, uma API backend poderia baixar essas imagens, armazená-las em um servidor seguro (ex: AWS S3, Cloudinary) e então fornecer URLs HTTPS dessas imagens armazenadas para o aplicativo iOS. Esta abordagem centraliza o risco de segurança no backend e permite que o frontend se comunique sempre via HTTPS.
 
-## 📚 Ideias para Melhorias Futuras
+## Melhorias Futuras
 
-* **Implementação de Testes:** Adicionar testes de unidade e UI para as Views, ViewModels e serviços.
-* **Design de UI/UX:** Aprimorar o design visual das telas, animações e interações do usuário.
-* **Cache de Dados (Mais Robusto):** Otimizar o uso do SwiftData para caching de rede, garantindo que o aplicativo sempre exiba os dados mais recentes de forma eficiente.
-* **Tratamento de Erros Avançado:** Melhorar a exibição de erros na UI e a recuperação de falhas de rede.
-* **Otimização de Performance:** Profiling para identificar e resolver gargalos de desempenho.
-* **Notificações Push:** Integrar com notificações para alertar sobre início de jogos, gols, etc.
-* **Widgets na Tela Inicial:** Criar widgets para exibir placares rápidos na tela de início do iOS.
-* **Modo Escuro (Dark Mode):** Implementar suporte completo ao modo escuro.
+Se houvesse mais tempo para evoluir este MVP, as seguintes melhorias seriam priorizadas:
 
----
+-   **Testes de UI (XCUITest):** A estrutura para testes de UI foi criada, mas a implementação foi adiada para focar na entrega dos testes de unidade, que validam a lógica de negócio. Um próximo passo seria finalizar a injeção de dados mock para a suíte de UI Tests e validar os fluxos de navegação e interação do usuário de forma automatizada.
+-   **Tratamento de Erros de UI:** Melhorar a experiência do usuário para diferentes cenários de erro (ex: mostrar uma tela específica para "sem conexão com a internet" em vez do alerta genérico).
+-   **Acessibilidade:** Adicionar suporte completo a VoiceOver e Dynamic Type para garantir que o aplicativo seja acessível a todos os usuários.
+-   **Migração de Dados (SwiftData):** Implementar um `SchemaMigrationPlan` para lidar com futuras alterações no modelo de dados de forma segura, sem que os usuários percam seus dados cacheados entre as atualizações do app.
+-   **Animações e Transições:** Adicionar animações mais fluidas e transições customizadas entre as telas para refinar a experiência do usuário.
