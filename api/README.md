@@ -45,9 +45,10 @@ O projeto segue uma arquitetura em camadas (`Controller` -> `Service` -> `Reposi
 
 ## Testes
 
-O projeto inclui testes de unidade e integração para garantir a qualidade do código.
+O projeto inclui testes de unidade e integração para garantir a qualidade do código. Para assegurar um ambiente de testes rápido, isolado e confiável, a suíte de testes utiliza um **banco de dados em memória H2**, configurado em `src/test/resources/application.properties`. Isso desacopla os testes da necessidade de uma instância externa do PostgreSQL.
+
 -   **Testes de Unidade:** Focados em componentes isolados, como os `Mappers`.
--   **Testes de Integração:** Usam `@WebMvcTest` e `@MockBean` para testar a camada de `Controller` de forma leve e isolada, sem depender do banco de dados real.
+-   **Testes de Integração:** Usam `@WebMvcTest` e `@MockBean` para testar a camada de `Controller` de forma leve.
 
 Para rodar todos os testes, execute o comando na pasta `api/brasileirao-api/`:
 ```sh

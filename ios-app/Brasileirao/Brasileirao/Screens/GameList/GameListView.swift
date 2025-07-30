@@ -27,7 +27,7 @@ struct GameListView: View {
 
                 ZStack {
                     if viewModel.isLoading && viewModel.groups.isEmpty {
-                        ProgressView("Buscando jogos...")
+                        ProgressView(String(localized: "loading_games_message"))
                     } else if let group = viewModel.currentGroup, !group.games.isEmpty {
                         List(group.games, id: \.id) { gameDTO in
                             VStack(spacing: 0) {
@@ -50,9 +50,13 @@ struct GameListView: View {
                         .refreshable { await viewModel.syncGames() }
                     } else {
                         ContentUnavailableView(
-                            "Nenhum Jogo Encontrado",
+                            String(localized: "empty_list_title"),
                             systemImage: "soccerball.inverse",
-                            description: Text("Não há jogos com o status \(viewModel.currentGroup?.title ?? "").")
+                            description: Text(
+                                String(localized:
+                                        "game_list_empty_state_description \(viewModel.currentGroup?.title ?? "")"
+                                      )
+                                )
                         )
                     }
                     
@@ -64,7 +68,7 @@ struct GameListView: View {
                     }
                 }
             }
-            .navigationTitle("JOGOS")
+            .navigationTitle(String(localized: "game_list_screen_title"))
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -86,8 +90,8 @@ struct GameListView: View {
                 viewModel.modelContext = modelContext
             }
 
-            .alert("Erro de Rede", isPresented: .constant(viewModel.errorMessage != nil), actions: {
-                Button("OK") { viewModel.errorMessage = nil }
+            .alert(String(localized: "network_error_alert_title"), isPresented: .constant(viewModel.errorMessage != nil), actions: {
+                Button(String(localized: "alert_button_ok")) { viewModel.errorMessage = nil }
             }, message: {
                 Text(viewModel.errorMessage ?? "Ocorreu um erro desconhecido.")
             })

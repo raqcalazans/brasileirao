@@ -12,7 +12,7 @@ struct GameDetailView: View {
             .listRowBackground(Color.clear)
 
             if !game.events.isEmpty {
-                Section(header: Text("Lance a Lance").fontWeight(.bold)) {
+                Section(header: Text("game_detail_events_header").fontWeight(.bold)) {
                     ForEach(sortedEvents()) { event in
                         GameEventView(event: event)
                     }
@@ -20,7 +20,7 @@ struct GameDetailView: View {
                 }
             } else {
                 if let homeTeam = game.homeTeam, let awayTeam = game.awayTeam {
-                    Section(header: Text("Sobre os Times").fontWeight(.bold)) {
+                    Section(header: Text("game_detail_teams_header").fontWeight(.bold)) {
                         VStack(spacing: 0) {
                             TeamView(team: homeTeam)
                             
@@ -34,7 +34,7 @@ struct GameDetailView: View {
             }
         }
         .listStyle(.insetGrouped)
-        .navigationTitle("Detalhes da Partida")
+        .navigationTitle(String(localized: "game_detail_screen_title"))
         .navigationBarTitleDisplayMode(.inline)
     }
     

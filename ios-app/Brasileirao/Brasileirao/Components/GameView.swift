@@ -51,9 +51,9 @@ struct GameView: View {
         VStack(spacing: style == .header ? 20 : 12) {
             HStack {
                 Text(stadium.components(separatedBy: ",").first ?? stadium)
-                Text("•")
+                Text("game_details_separator")
                 Text(gameDateTime.gameDayDisplay)
-                Text("•")
+                Text("game_details_separator")
                 Text(gameDateTime.gameTimeDisplay)
             }
             .font(.caption)
@@ -76,13 +76,13 @@ struct GameView: View {
                             .font(style == .header ? .largeTitle : .title2)
                             .fontWeight(.bold)
                     } else {
-                        Text("x")
+                        Text("game_score_separator")
                             .font(.title3)
                             .foregroundColor(.secondary)
                     }
                     
                     if isLive {
-                        Text("AO VIVO")
+                        Text("live_badge_title")
                             .font(.caption).bold().foregroundColor(.red)
                     }
                 }
@@ -98,7 +98,7 @@ struct GameView: View {
             }
             
             if style == .row {
-                Text("FIQUE POR DENTRO")
+                Text("get_details_button")
                    .font(.system(size: 12, weight: .bold))
                    .foregroundColor(Color(red: 0.1, green: 0.7, blue: 0.3))
             }

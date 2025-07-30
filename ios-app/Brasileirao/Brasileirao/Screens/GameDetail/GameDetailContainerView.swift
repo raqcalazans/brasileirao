@@ -18,7 +18,7 @@ struct GameDetailContainerView: View {
             GameDetailView(game: game)
         } else {
             ProgressView()
-                .navigationTitle("Carregando...")
+                .navigationTitle(Text("loading_indicator_title"))
         }
     }
 }

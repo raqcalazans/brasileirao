@@ -89,3 +89,27 @@ http://s.glbimg.com/es/sde/f/equipes/2014/04/14/goias_60x60.png
 http://s.glbimg.com/es/sde/f/equipes/2015/05/05/fluminense-escudo-65x65.png
 http://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png
 ```
+
+---
+
+## Solução Proposta: Brasileirão App
+
+Este repositório contém a implementação completa para o desafio, consistindo em uma API backend e um aplicativo cliente para iOS. A solução foi desenvolvida com foco em arquitetura moderna, escalabilidade e qualidade de código.
+
+[![CI Build & Unit Test](https://github.com/SelecaoGlobocom/raquel-calazans/actions/workflows/ci.yml/badge.svg)](https://github.com/SelecaoGlobocom/raquel-calazans/actions/workflows/ci.yml)
+
+### Arquitetura Geral
+
+O projeto foi estruturado como um "monorepo" contendo dois subprojetos principais:
+
+* **`./api`**: Uma API RESTful desenvolvida com **Java e Spring Boot**.
+* **`./ios-app`**: Um aplicativo nativo para iOS desenvolvido com **Swift, SwiftUI e SwiftData**.
+
+A decisão de arquitetura mais impactante foi a implementação de um modelo de **UI Guiada pelo Servidor (Server-Driven UI)**, onde a API define a estrutura de agrupamento dos jogos (ex: por status ou por rodada), e o cliente iOS apenas renderiza a estrutura recebida.
+
+### Detalhes de Cada Projeto
+
+Para informações detalhadas sobre a arquitetura, stack de tecnologias, instruções de setup, testes e decisões de design de cada parte do projeto, por favor, consulte seus respectivos `README`s:
+
+* ➡️ **[Documentação da API (Backend)](./api/README.md)**
+* ➡️ **[Documentação do App (iOS)](./ios-app/README.md)**
