@@ -1,16 +1,14 @@
-# Globo.com: coding challenge
+# Coding challenge
 
 ## O Desafio
 
-Você deverá criar um aplicativo, chamado de "Brasileirão", para acompanhamento de jogos de futebol.
+Criar um aplicativo para acompanhamento de jogos de futebol.
 
 O aplicativo deverá funcionar em dispositivos iOS.
 
-Você também deverá fazer a API que provê os dados para o aplicativo com a tecnologia de sua escolha.
+Também deverá ser feita a API que provê os dados para o aplicativo com a tecnologia de sua escolha.
 
 ## Considerações Gerais
-
-Você deverá usar este repositório como o principal do projeto. Todos os seus commits devem estar registrados aqui.
 
 **Registre tudo**: Ideias que gostaria de implementar se tivesse mais tempo (explique como você as resolveria), decisões tomadas e seus porquês, arquiteturas testadas e os motivos de terem sido modificadas ou abandonadas.
 
@@ -23,8 +21,6 @@ Avaliaremos sua submissão como se fosse um produto mínimo viável (MVP), pront
 * os testes.
 * a automação.
 * a escalabilidade.
-
-Em caso de dúvidas, pergunte.
 
 ## O Aplicativo
 
@@ -45,8 +41,6 @@ Considere as seguintes condições:
 - O usuário pode querer atualizar a lista de jogos
 
 - Clicar sobre um jogo leva o usuário para a tela de detalhe daquele jogo
-
-Exemplo de uma lista de jogos na web (lado direito): [brasileirão série a](http://globoesporte.globo.com/futebol/brasileirao-serie-a/).
 
 ### Detalhe do Jogo
 
@@ -88,15 +82,21 @@ http://s.glbimg.com/es/sde/f/equipes/2014/04/14/figueirense_60x60.png
 http://s.glbimg.com/es/sde/f/equipes/2014/04/14/goias_60x60.png
 http://s.glbimg.com/es/sde/f/equipes/2015/05/05/fluminense-escudo-65x65.png
 http://s.glbimg.com/es/sde/f/equipes/2014/04/14/santos_60x60.png
+http://s.glbimg.com/es/sde/f/equipes/2014/04/14/botafogo_60x60.png
 ```
 
 ---
 
 ## Solução Proposta: Brasileirão App
 
-Este repositório contém a implementação completa para o desafio, consistindo em uma API backend e um aplicativo cliente para iOS. A solução foi desenvolvida com foco em arquitetura moderna, escalabilidade e qualidade de código.
+<img width="200" alt="AppIcon_brasileirao" src="https://github.com/user-attachments/assets/6b64d4d1-5b27-4497-8d77-d84933691bf7" />
 
+![Swift Version](https://img.shields.io/badge/Swift-5.5%2B-orange)
+![Platform](https://img.shields.io/badge/Platform-iOS%2013%2B-lightgrey)
+![Architecture](https://img.shields.io/badge/Architecture-MVVM-blue)
 [![CI Build & Unit Test](https://github.com/SelecaoGlobocom/raquel-calazans/actions/workflows/ci.yml/badge.svg)](https://github.com/SelecaoGlobocom/raquel-calazans/actions/workflows/ci.yml)
+
+Este repositório contém a implementação completa para o desafio, consistindo em uma API backend e um aplicativo cliente para iOS. A solução foi desenvolvida com foco em arquitetura moderna, escalabilidade e qualidade de código.
 
 ### Arquitetura Geral
 
