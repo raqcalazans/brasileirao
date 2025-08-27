@@ -113,3 +113,14 @@ Para informações detalhadas sobre a arquitetura, stack de tecnologias, instru�
 
 * ➡️ **[Documentação da API (Backend)](./api/README.md)**
 * ➡️ **[Documentação do App (iOS)](./ios-app/README.md)**
+
+### Resultados
+
+O agrupamento dos jogos depende de como os dados chegam. Ou seja, por status (ENCERRADOS, AO VIVO, AGENDADOS), ou por rodadas (1ª RODADA, 2ª RODADA, 3ª RODADA), ou de qualquer outra forma, bastantando ajustar o JSON.
+
+| Por status | Por rodadas |
+| :---: | :----: |
+| ![por_status](https://github.com/user-attachments/assets/85ada342-622c-4f85-a50b-047056b6c6e1) | ![por_rodadas](https://github.com/user-attachments/assets/5564c4ad-f8ae-482b-9b98-2ce6d2fdd7e3) |
+
+
+
